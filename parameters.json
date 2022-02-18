@@ -1,0 +1,122 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "networkInterfaceName": {
+            "value": "mal-dwimapNIC-03"
+        },
+        "enableAcceleratedNetworking": {
+            "value": true
+        },
+        "networkSecurityGroupName": {
+            "value": "MAL-DWIMAP-03-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "RDP",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "3389"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "snet-sap-dev-euw-001"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/4d185968-8e6f-4f43-a298-d57111507cbb/resourceGroups/rg-sap-network-nonprod-001/providers/Microsoft.Network/virtualNetworks/vnet-sap-nonprod-euw-001"
+        },
+        "virtualMachineName": {
+            "value": "MAL-DWIMAP-03"
+        },
+        "virtualMachineComputerName": {
+            "value": "MAL-DWIMAP-03"
+        },
+        "virtualMachineRG": {
+            "value": "RG-DWIMAP-03-DEV-EUW-001"
+        },
+        "osDiskType": {
+            "value": "StandardSSD_LRS"
+        },
+        "osDiskDeleteOption": {
+            "value": "Detach"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "deleteOption": "Detach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "MAL-DWIMAP-03_DataDisk_0",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "MAL-DWIMAP-03_DataDisk_0",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 64,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2as_v4"
+        },
+        "nicDeleteOption": {
+            "value": "Detach"
+        },
+        "adminUsername": {
+            "value": "dwimap03"
+        },
+        "adminPassword": {
+            "value": "Testdwimap@03"
+        },
+        "patchMode": {
+            "value": "AutomaticByOS"
+        },
+        "enableHotpatching": {
+            "value": false
+        },
+        "backupVaultName": {
+            "value": "rsv-nonprod-euw-001"
+        },
+        "backupFabricName": {
+            "value": "Azure"
+        },
+        "backupVaultRGName": {
+            "value": "rg-asrbackup-euw-001"
+        },
+        "backupVaultRGIsNew": {
+            "value": false
+        },
+        "backupPolicyName": {
+            "value": "McLarenVMNonProd"
+        },
+        "backupItemName": {
+            "value": "vm;iaasvmcontainerv2;RG-DWIMAP-03-DEV-EUW-001;MAL-DWIMAP-03"
+        }
+    }
+}
